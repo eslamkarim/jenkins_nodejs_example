@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim
+  name: node-pv-claim
   labels:
     app: k8s-node
 spec:
@@ -73,10 +73,10 @@ spec:
         ports:
         - containerPort: 3306
         volumeMounts:
-        - name: mysql-persistent-storage
+        - name: node-persistent-storage
           mountPath: /var/lib/mysql
       
       volumes:
-      - name: mysql-persistent-storage
+      - name: node-persistent-storage
         persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          claimName: node-pv-claim
