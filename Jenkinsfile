@@ -11,13 +11,13 @@ pipeline {
         stage("get input from user"){
             steps {
                 script {
-                    def user_input = input(
-                        id: 'commitId', message: 'Enter commit id to build:?', 
+                    def userInput = input(
+                        id: 'userInput', message: 'Enter commit id to build:', 
                         parameters: [
-                        [$class: 'TextParameterDefinition', defaultValue: 'None', description: 'commit id to be built', name: 'commitId'],
+                        string(defaultValue: 'None', description: 'commit id to be built', name: 'commitId')
                     ])
-                    commit_id = user_input['commitId']
-                    echo ("commit: "+user_input['commitId'])
+                    commit_id = commitId
+                    echo ("commit: ${commitId}")
                 }
             }
         }
