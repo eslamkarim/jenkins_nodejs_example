@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db
+  namespace: "dev"
+data:
+  HOST: ${HOST}
+  USERNAME: ${USERNAME}
+  PASSWORD: ${PASSWORD}
+  DATABASE: ${DATABASE}
