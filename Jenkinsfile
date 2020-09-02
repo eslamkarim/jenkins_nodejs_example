@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     def user_input = input(
-                        id: 'userInput', message: 'Enter commit id to build:?', 
+                        id: 'commitId', message: 'Enter commit id to build:?', 
                         parameters: [
                         [$class: 'TextParameterDefinition', defaultValue: 'None', description: 'commit id to be built', name: 'commitId'],
                     ])
