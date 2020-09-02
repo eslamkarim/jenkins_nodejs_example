@@ -1,4 +1,4 @@
-ENV commit-id=''
+def commit-id=''
 pipeline {
     agent any
     environment {
