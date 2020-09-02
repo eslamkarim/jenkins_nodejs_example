@@ -31,5 +31,18 @@ pipeline {
                 echo("host= "+ $HOST)
             }
         }
+
+        stage("test docker"){
+            steps{
+                sh 'docker ps'
+            }
+        }
+
+        
+        stage("test kubectl"){
+            steps{
+                sh 'kubectl get po --namespace=dev'
+            }
+        }
     }
 }
