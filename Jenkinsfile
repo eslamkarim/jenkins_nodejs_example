@@ -26,5 +26,10 @@ pipeline {
                 sh 'git checkout ${commit-id}'
             }
         }
+        stage("show secrets"){
+            steps{
+                echo("host= "+ $HOST)
+            }
+        }
     }
 }
