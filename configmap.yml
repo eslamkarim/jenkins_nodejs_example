@@ -4,7 +4,7 @@ metadata:
   name: db
   namespace: "dev"
 data:
-  HOST: ${HOST}
-  USERNAME: ${USERNAME}
-  PASSWORD: ${PASSWORD}
-  DATABASE: ${DATABASE}
+  HOST: "${HOST}"
+  USERNAME: "${USERNAME}"
+  PASSWORD: "${PASSWORD}"
+  DATABASE: "${DATABASE}"
