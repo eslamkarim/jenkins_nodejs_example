@@ -26,23 +26,16 @@ pipeline {
                 sh 'git checkout ${commit_id}'
             }
         }
-        stage("show secrets"){
+        stage("build docker image"){
             steps{
-                echo("host= ${HOST}")
+                sh 'docker build -t eslamkarim/voda-node:latest .'
             }
         }
-
-        stage("test docker"){
+        stage("push docker image"){
             steps{
-                sh 'docker ps'
-            }
-        }
-
-        
-        stage("test kubectl"){
-            steps{
-                sh 'kubectl get po --namespace=dev'
-                sh 'kubectl create svc jenkhello --namespace=dev'
+                withDockerRegistry([ credentialsId: "dockerhub-cred", url: "" ]) {
+                    sh 'docker push eslamkarim/voda-node:latest'
+                }
             }
         }
     }
