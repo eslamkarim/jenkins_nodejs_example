@@ -1,0 +1,82 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-db
+  labels:
+    app: k8s-node
+spec:
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  selector:
+    app: k8s-node
+    tier: db
+  clusterIP: None
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  labels:
+    app: k8s-node
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: node-db
+  labels:
+    app: k8s-node
+spec:
+  selector:
+    matchLabels:
+      app: k8s-node
+      tier: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: k8s-node
+        tier: db
+    spec:
+      containers:
+      - image: mysql:latest
+        env:
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: db
+              key: USERNAME
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: db
+              key: PASSWORD
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: db
+              key: PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: db
+              key: DATABASE
+        name: node-db
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim

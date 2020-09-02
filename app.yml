@@ -20,7 +20,7 @@ spec:
         tier: app
     spec:
       containers:
-      - image: eslamkarim/k8s-node:latest
+      - image: eslamkarim/voda-node:latest
         env:
         - name: HOST
           valueFrom:
@@ -42,6 +42,6 @@ spec:
             configMapKeyRef:
               name: db
               key: DATABASE
-        name: fundraiser
+        name: node-container
         ports:
         - containerPort: 3000
