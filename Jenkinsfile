@@ -16,8 +16,8 @@ pipeline {
                         parameters: [
                         string(defaultValue: 'None', description: 'commit id to be built', name: 'commitId')
                     ])
-                    commit_id = commitId
-                    echo ("commit: ${commitId}")
+                    commit_id = userInput.commitId
+                    echo ("commit: ${commit_id}")
                 }
             }
         }
