@@ -28,7 +28,7 @@ pipeline {
         }
         stage("show secrets"){
             steps{
-                echo("host= "+ $HOST)
+                echo("host= ${HOST}")
             }
         }
 
