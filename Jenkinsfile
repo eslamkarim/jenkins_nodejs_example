@@ -27,10 +27,5 @@ pipeline {
                 sh "kubectl apply -f . -n $deploy_env"
             }
         }
-        stage("test deployment success"){
-            steps{
-                sh 'kubectl get all --all-namespaces'
-            }
-        }
     }
 }
