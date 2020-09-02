@@ -24,7 +24,7 @@ pipeline {
         stage("deploy application"){
             steps{
                 sh 'ls'
-                sh 'kubectl apply -f . -n $deploy_env'
+                sh "kubectl apply -f . -n $deploy_env"
             }
         }
         stage("test deployment success"){
