@@ -23,8 +23,8 @@ pipeline {
         }
         stage("deploy application"){
             steps{
-                echo "====++++${deploy_env}++++===="
-                sh 'kubectl apply -f --namespace=${deploy_env} .'
+                sh 'ls'
+                sh 'kubectl apply -f . -n ${deploy_env} '
             }
         }
         stage("test deployment success"){
