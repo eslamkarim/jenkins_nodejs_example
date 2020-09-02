@@ -23,7 +23,7 @@ pipeline {
         }
         stage("checkout commit"){
             steps{
-                sh 'git checkout ${commit-id}'
+                sh 'git checkout ${commit_id}'
             }
         }
         stage("show secrets"){
@@ -42,6 +42,7 @@ pipeline {
         stage("test kubectl"){
             steps{
                 sh 'kubectl get po --namespace=dev'
+                sh 'kubectl create svc jenkhello --namespace=dev'
             }
         }
     }
