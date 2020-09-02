@@ -1,4 +1,4 @@
-def commit-id=''
+def commit_id=''
 pipeline {
     agent any
     environment {
@@ -11,13 +11,13 @@ pipeline {
         stage("get input from user"){
             steps {
                 script {
-                    def user-input = input(
+                    def user_input = input(
                         id: 'userInput', message: 'Enter commit id to build:?', 
                         parameters: [
                         [$class: 'TextParameterDefinition', defaultValue: 'None', description: 'commit id to be built', name: 'commitId'],
                     ])
-                    commit-id = user-input['commitId']
-                    echo ("commit: "+user-input['commitId'])
+                    commit_id = user_input['commitId']
+                    echo ("commit: "+user_input['commitId'])
                 }
             }
         }
