@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: db
 data:
-  HOST: node-db
+  HOST: $HOST
   USERNAME: $USERNAME
   PASSWORD: $PASSWORD
   DATABASE: $DATABASE
