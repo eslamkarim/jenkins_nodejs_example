@@ -25,6 +25,7 @@ pipeline {
             steps{
                 sh 'apk add gettext'
                 sh "envsubst < configmap.yml > configmap.yml"
+                sh "ls"
                 sh "kubectl apply -f . -n $deploy_env"
             }
         }
