@@ -24,7 +24,8 @@ pipeline {
         stage("deploy application"){
             steps{
                 sh 'apk add gettext'
-                sh "cat envsubst < configmap.yml"
+                sh "envsubst < configmap.yml > out.txt"
+                sh "cat out.txt"
             }
         }
     }
