@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: db
+  name: db-config
 data:
-  HOST: "$HOST"
-  USERNAME: "$USERNAME"
-  PASSWORD: "$PASSWORD"
-  DATABASE: "$DATABASE"
+  HOST: $HOST
+  USERNAME: $USERNAME
+  PASSWORD: $PASSWORD
+  DATABASE: $DATABASE

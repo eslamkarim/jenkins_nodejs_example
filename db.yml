@@ -39,22 +39,22 @@ spec:
         - name: MYSQL_USER
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: USERNAME
         - name: MYSQL_PASSWORD
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: PASSWORD
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: PASSWORD
         - name: MYSQL_DATABASE
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: DATABASE
         name: node-db
         ports:

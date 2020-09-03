@@ -24,22 +24,22 @@ spec:
         - name: HOST
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: HOST
         - name: USERNAME
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: USERNAME
         - name: PASSWORD
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: PASSWORD
         - name: DATABASE
           valueFrom:
             configMapKeyRef:
-              name: db
+              name: db-config
               key: DATABASE
         name: node-container
         ports:
