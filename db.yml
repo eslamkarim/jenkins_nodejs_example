@@ -34,7 +34,7 @@ spec:
         tier: db
     spec:
       containers:
-      - image: mysql:5.7
+      - image: mysql:latest
         env:
         - name: MYSQL_USER
           valueFrom:

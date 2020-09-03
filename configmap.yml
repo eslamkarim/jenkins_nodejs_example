@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: db
 data:
-  HOST: ${HOST}
-  USERNAME: ${USERNAME}
-  PASSWORD: ${PASSWORD}
-  DATABASE: ${DATABASE}
+  HOST: "$HOST"
+  USERNAME: "$USERNAME"
+  PASSWORD: "$PASSWORD"
+  DATABASE: "$DATABASE"

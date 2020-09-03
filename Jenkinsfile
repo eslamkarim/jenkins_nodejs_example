@@ -23,8 +23,7 @@ pipeline {
         }
         stage("deploy application"){
             steps{
-                sh 'ls'
-                sh "kubectl apply -f . -n $deploy_env"
+                sh "envsubst < configmap.yml | kubectl apply -f . -n $deploy_env"
             }
         }
     }
