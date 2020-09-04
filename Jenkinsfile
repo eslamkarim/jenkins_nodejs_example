@@ -17,7 +17,6 @@ pipeline {
                         choice(name: 'deployEnviroment', choices: ['dev','test'])
                     ])
                     deploy_env = userInput
-                    echo ("commit: ${deploy_env}")
                 }
             }
         }
@@ -25,8 +24,10 @@ pipeline {
             steps{
                 sh 'apk add gettext'
                 sh "envsubst < configmap.yml > configmap.tmp && mv configmap.tmp configmap.yml"
-                sh "cat configmap.yml"
-                sh "kubectl apply -f . -n $deploy_env"
+                withEnv(["ENV=$deploy_env"]) {
+                    sh "envsubst < playbook.yaml > playbook.tmp && mv playbook.tmp playbook.yaml"
+                    sh "ansible-playbook playbook.yaml"
+                }
             }
         }
     }

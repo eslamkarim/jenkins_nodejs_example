@@ -1,0 +1,6 @@
+---
+  - name: deploy node app
+    hosts: localhost
+    tasks:
+    - name: run kubectl 
+      shell: kubectl apply -f . -n $ENV
