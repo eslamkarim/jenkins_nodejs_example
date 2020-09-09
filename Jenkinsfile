@@ -28,13 +28,13 @@ pipeline {
         }
         stage("build docker image"){
             steps{
-                sh 'docker build -t eslamkarim/voda-node:latest .'
+                sh 'docker build -t localhost:30654/voda-node:latest .'
             }
         }
         stage("push docker image"){
             steps{
-                withDockerRegistry([ credentialsId: "dockerhub-cred", url: "" ]) {
-                    sh 'docker push eslamkarim/voda-node:latest'
+                withDockerRegistry([ credentialsId: "nexus", url: "localhost:30654" ]) {
+                    sh 'docker push localhost:30654/voda-node:latest'
                 }
             }
         }
