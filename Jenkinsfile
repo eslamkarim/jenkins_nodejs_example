@@ -33,7 +33,7 @@ pipeline {
         }
         stage("push docker image"){
             steps{
-                withDockerRegistry([ credentialsId: "nexus", url: "localhost:30654" ]) {
+                withDockerRegistry([ credentialsId: "nexus", url: "http://localhost:30654" ]) {
                     sh 'docker push localhost:30654/voda-node:latest'
                 }
             }
