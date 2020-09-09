@@ -26,7 +26,9 @@ pipeline {
                 sh "envsubst < configmap.yml > configmap.tmp && mv configmap.tmp configmap.yml"
                 withEnv(["ENV=$deploy_env"]) {
                     sh "envsubst < playbook.yaml > playbook.tmp && mv playbook.tmp playbook.yaml"
-                    sh "ansible-playbook playbook.yaml"
+                    withDockerRegistry([ credentialsId: "nexus", url: "http://localhost:30654" ]){
+                        sh "ansible-playbook playbook.yaml"
+                    }
                 }
             }
         }
