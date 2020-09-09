@@ -44,3 +44,5 @@ spec:
         name: node-container
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+        - name: nexus
