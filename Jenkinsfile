@@ -24,7 +24,7 @@ pipeline {
             steps{
                 sh 'apk add gettext'
                 sh "envsubst < configmap.yml > configmap.tmp && mv configmap.tmp configmap.yml"
-                sh "cat configmap.yaml"
+                sh "cat configmap.yml"
                 withDockerRegistry([ credentialsId: "nexus", url: "http://localhost:30654" ]){
                     withEnv(["ENV=$deploy_env"]) {
                         sh "envsubst < playbook.yaml > playbook.tmp && mv playbook.tmp playbook.yaml"
